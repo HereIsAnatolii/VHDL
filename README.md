@@ -1,2 +1,2 @@
 # VHDL
-VHDL codes for Power Electronics use
+## VHDL blocks for Power Electronics applications
