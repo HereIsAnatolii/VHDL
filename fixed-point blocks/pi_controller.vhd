@@ -1,11 +1,29 @@
+----------------------------------------------------------------------------------
+-- Company: HereIsAnatolii
+-- Engineer: Dr. Anatolii Tcai
+-- 
+-- Create Date: 04/06/2024 07:50:45 AM
+-- Design Name: PI controller with Antiwindup
+-- Module Name: PI_controller
+-- Project Name: Private
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: Fixed-point logic PI controller with antiwindup
+-- 
+-- Dependencies: 
+-- no
+-- Revision:
+-- Revision 0.00 - File Created
+-- Revision 0.01 - Reset added 
+-- Revision 0.10 - File modified, definition and initialization prototypes added 
+-- Revision 0.20 - Inputs and outputs are converted into signed 
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
--- comment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library ISIM;
---use ISIM.VComponents.all;
 
 entity pi_aw is
     generic (width : integer := 40;
@@ -56,7 +74,7 @@ begin
         product_I <= (others=>'0');
         product_aw <= (others=>'0');
         sum_I <= (others=>'0');
-        sum_I_AW <= (others=>'0');
+
         sum_PI <= (others=>'0');
         aw <= (others=>'0');
         pi_calc <= (others=>'0');
@@ -66,6 +84,7 @@ begin
         lim_h <= (others => '0');
         lim_l <= (others => '0');
         lim_h(2*frac) <= '1';
+
         one := (others => '0');
         one(frac) := '1';
         
@@ -74,6 +93,7 @@ begin
         Kp(frac-1) <= '1';
         Kaw(frac-1) <= '1';
         KiTs  <= (others => '0');
+
         mul_duty <= to_signed(800,width);
         
         step := 0;
