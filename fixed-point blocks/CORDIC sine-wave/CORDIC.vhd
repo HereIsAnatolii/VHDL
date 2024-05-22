@@ -29,8 +29,8 @@ entity cordic is
     Port ( 	clk 	: in STD_LOGIC;
 			rst 	: in STD_LOGIC;
 			angle   : in  SIGNED(12 downto 0);
-			sin 	: out SIGNED(47 downto 0);
-			cos 	: out SIGNED(47 downto 0));
+			sin 	: out SIGNED(11 downto 0);
+			cos 	: out SIGNED(11 downto 0));
 end entity;
 
 architecture Behavioral of cordic is
